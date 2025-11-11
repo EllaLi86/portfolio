@@ -18,19 +18,19 @@
     <form action="mailto:ell024@ucsd.edu" method="POST" enctype="text/plain"></form>
         <label>
             Your Email:
-            <input type="email" name="email">
+            <input type="email" name="email" required value="test@example.com">
         </label>
         <br><br>
         
         <label>
             Subject:
-            <input name="subject">
+            <input name="subject" required value="Test Message">
         </label>
         <br><br>
         
         <label>
             Message:
-            <textarea name="body"></textarea>
+            <textarea name="body" rows="5" required></textarea>
         </label>
         <br><br>
 
