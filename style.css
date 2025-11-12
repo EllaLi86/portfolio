@@ -44,15 +44,17 @@ input, textarea, button {
 }
 
 form label {
-    display: block;
+    display: grid;
     margin-block: 1rem;
 }
 
 form input, form textarea, form button {
-    display: block;
+    display: grid;
     width: 100%;
     box-sizing: border-box;
     margin-block: 0.5rem;
 }
+
+
 
 
