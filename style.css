@@ -11,16 +11,20 @@ nav {
     display: flex;
     gap: 1rem;
     padding: 1rem 0;
+    margin-bottom: 2rem; 
+    border-bottom: 1px solid oklch(80% 3% 200); 
 }
 
 nav a {
-    text-decoration: none;
-    color: inherit;
-    flex: 1;           /* Add this line */
-    text-align: center; /* Optional: center the text */
+    text-decoration: none; 
+    color: inherit; 
+    flex: 1;
+    text-align: center;
+    padding: 0.5em;
 }
 
 nav a.current {
     font-weight: bold;
-    text-decoration: underline;
+    border-bottom: 0.4em solid oklch(80% 3% 200);
+    padding-bottom: 0.1em;
 }
