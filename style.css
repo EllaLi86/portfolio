@@ -9,4 +9,18 @@ body {
 }
 nav {
     display: flex;
+    gap: 1rem;
+    padding: 1rem 0;
+}
+
+nav a {
+    text-decoration: none;
+    color: inherit;
+    flex: 1;           /* Add this line */
+    text-align: center; /* Optional: center the text */
+}
+
+nav a.current {
+    font-weight: bold;
+    text-decoration: underline;
 }
