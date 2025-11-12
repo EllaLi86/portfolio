@@ -97,4 +97,25 @@ form button:hover {
     gap: 2rem;
 }
 
+.projects article {
+    display: grid;
+    grid-template-rows: subgrid; /* Inherit parent grid rows */
+    grid-row: span 3; /* Each article spans 3 rows */
+    gap: 1em; /* Space between content inside articles */
+    
+    padding: 1rem;
+    border: 1px solid oklch(80% 3% 200);
+    border-radius: 0.5rem;
+}
+
+/* Remove margins from headings for better alignment */
+.projects article h2 {
+    margin: 0;
+}
+
+.projects article img {
+    max-width: 100%;
+    height: auto;
+}
+
 
