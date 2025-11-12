@@ -43,6 +43,25 @@ input, textarea, button {
     font: inherit;
 }
 
+form {
+    display: grid;
+    grid-template-columns: auto 1fr; /* Two columns: labels | inputs */
+    gap: 1rem;
+    align-items: center;
+}
+
+/* Make labels go in the first column */
+form label {
+    grid-column: 1;
+}
+
+/* Make form controls go in the second column */
+form input, form textarea, form button {
+    grid-column: 2;
+    box-sizing: border-box;
+    width: 100%;
+}
+
 form label {
     display: grid;
     margin-block: 1rem;
