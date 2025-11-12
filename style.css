@@ -45,19 +45,21 @@ input, textarea, button {
 
 form {
     display: grid;
-    grid-template-columns: auto 1fr; /* Two columns: labels | inputs */
+    grid-template-columns: auto 1fr;
     gap: 1rem;
     align-items: center;
 }
 
 /* Make labels go in the first column */
-form label {
-    grid-column: 1;
+form label, form button {
+    grid-column: 1 / -1; /* Span from first to last column */
+    display: grid;
+    grid-template-columns: subgrid; /* Inherit parent grid columns */
+    align-items: center;
 }
 
-/* Make form controls go in the second column */
-form input, form textarea, form button {
-    grid-column: 2;
+form input, form textarea {
+    grid-column: 2; /* Place in second column of subgrid */
     box-sizing: border-box;
     width: 100%;
 }
