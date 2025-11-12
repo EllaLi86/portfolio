@@ -28,3 +28,9 @@ nav a.current {
     border-bottom: 0.4em solid oklch(80% 3% 200);
     padding-bottom: 0.1em;
 }
+
+
+:root{
+  --color-accent: oklch(77.442% 0.10211 305.321 / 0.614); 
+    accent-color: var(--color-accent);
+}
