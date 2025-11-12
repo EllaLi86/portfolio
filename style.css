@@ -43,11 +43,23 @@ input, textarea, button {
     font: inherit;
 }
 
-form label {
+form {
     display: grid;
-    margin-block: 1rem;
+    grid-template-columns: auto 1fr; /* Two columns: labels | inputs */
+    gap: 1rem;
+    align-items: center; 
 }
 
+form label {
+    grid-column: 1;
+}
+
+
+form input, form textarea, form button {
+    grid-column: 2; 
+    box-sizing: border-box;
+    width: 100%;
+}
 form input, form textarea {
     padding: 0.5rem;
     border: 1px solid oklch(80% 3% 200);
