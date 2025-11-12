@@ -82,10 +82,13 @@ form button {
     border: none;
     border-radius: 0.25rem;
     cursor: pointer;
+    /* Reset grid placement for button since it's not a label */
+    display: block;
+    width: 100%;
 }
 
-/* form button:hover {
+form button:hover {
     opacity: 0.9;
-} */
+}
 
 
