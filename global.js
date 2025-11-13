@@ -44,8 +44,17 @@ for (let p of pages) {
   a.href = url;
   a.textContent = title;
   nav.append(a);
+
+
+  if (a.host === location.host && a.pathname === location.pathname) {
+        a.classList.add('current');
+    }
+    
+    // Add target="_blank" for external links
+    if (a.host !== location.host) {
+        a.target = "_blank";
+    }
+    
+    nav.append(a);
 }
 
-if (a.host === location.host && a.pathname === location.pathname) {
-  a.classList.add('current');
-}
