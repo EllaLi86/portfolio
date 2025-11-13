@@ -43,3 +43,4 @@ for (let p of pages) {
   nav.insertAdjacentHTML('beforeend', `<a href="${url}">${title}</a>`);
 }
 
+console.log('Navigation created! Number of links:', nav.children.length);
