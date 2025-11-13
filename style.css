@@ -118,6 +118,17 @@ form button:hover {
     height: auto;
 }
 
+/* Enable automatic light/dark mode support */
+html {
+    color-scheme: light dark;
+}
+
+/* Use system colors for better dark mode support */
+body {
+    background-color: canvas;
+    color: canvastext;
+}
+
 nav {
   --border-color: oklch(50% 10% 200 / 40%);
   border-bottom-color: var(--border-color);
