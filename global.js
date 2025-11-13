@@ -76,10 +76,18 @@ function createColorSchemeSwitch() {
     schemeSelect.value = savedScheme;
     document.documentElement.style.colorScheme = savedScheme;
     
-    schemeSelect.addEventListener('change', function() {
-        const selectedScheme = this.value;
-        document.documentElement.style.colorScheme = selectedScheme;
-        localStorage.setItem('color-scheme', selectedScheme);
+    // schemeSelect.addEventListener('change', function() {
+    //     const selectedScheme = this.value;
+    //     document.documentElement.style.colorScheme = selectedScheme;
+    //     localStorage.setItem('color-scheme', selectedScheme);
+    // });
+
+    select.addEventListener('input', function (event) {
+        console.log('color scheme changed to', event.target.value);
+        
+        document.documentElement.style.setProperty('color-scheme', event.target.value);
+        
+        localStorage.setItem('color-scheme', event.target.value);
     });
 }
 

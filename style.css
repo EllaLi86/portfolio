@@ -140,7 +140,7 @@ nav {
     top: 1rem;
     right: 1rem;
     font-size: 88%;
-    font-family: inherit; /* Use the same font as the rest of the site */
+    font-family: inherit; 
     z-index: 1000; /* Ensure it stays on top of other content */
 }
 
@@ -154,11 +154,6 @@ nav {
     color: canvastext;
     font-size: inherit;
     font-family: inherit;
-}
-
-/* Optional: Improve the appearance on hover/focus */
-.color-scheme select:hover {
-    border-color: oklch(60% 10% 200);
 }
 
 .color-scheme select:focus {
