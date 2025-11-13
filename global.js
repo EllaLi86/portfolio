@@ -37,21 +37,10 @@ for (let p of pages) {
   let url = p.url;
   let title = p.title;
   // next step: create link and add it to nav
-  // Create link and add it to nav
   nav.insertAdjacentHTML('beforeend', `<a href="${url}">${title}</a>`);
 }
 
-function addCurrentClass() {
-    const navLinks = $$("nav a");
-    let currentLink = navLinks.find(
-        (a) => a.host === location.host && a.pathname === location.pathname
-    );
-    
-    if (currentLink) {
-        currentLink.classList.add('current');
-    }
+if (!url.startsWith('http')) {
+  url = BASE_PATH + url;
 }
-
-// Call this after creating the navigation
-addCurrentClass();
 
