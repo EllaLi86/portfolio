@@ -44,8 +44,4 @@ for (let p of pages) {
   a.href = url;
   a.textContent = title;
   nav.append(a);
-
-
-
-
-
+}
