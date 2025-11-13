@@ -118,4 +118,9 @@ form button:hover {
     height: auto;
 }
 
+nav {
+  --border-color: oklch(50% 10% 200 / 40%);
+  border-bottom-color: var(--border-color);
+}
+
 
