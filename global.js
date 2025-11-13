@@ -45,3 +45,7 @@ for (let p of pages) {
   a.textContent = title;
   nav.append(a);
 }
+
+if (a.host === location.host && a.pathname === location.pathname) {
+  a.classList.add('current');
+}
