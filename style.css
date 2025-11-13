@@ -134,6 +134,38 @@ nav {
   border-bottom-color: var(--border-color);
 }
 
+/* Style and position the color scheme switcher */
+.color-scheme {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 88%;
+    font-family: inherit; /* Use the same font as the rest of the site */
+    z-index: 1000; /* Ensure it stays on top of other content */
+}
+
+/* Style the dropdown select element */
+.color-scheme select {
+    margin-left: 0.5rem;
+    padding: 0.25rem 0.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 0.25rem;
+    background: canvas;
+    color: canvastext;
+    font-size: inherit;
+    font-family: inherit;
+}
+
+/* Optional: Improve the appearance on hover/focus */
+.color-scheme select:hover {
+    border-color: oklch(60% 10% 200);
+}
+
+.color-scheme select:focus {
+    outline: 2px solid oklch(60% 0.3 265);
+    outline-offset: 1px;
+}
+
 
 
 
