@@ -43,7 +43,3 @@ for (let p of pages) {
   nav.insertAdjacentHTML('beforeend', `<a href="${url}">${title}</a>`);
 }
 
-if (!url.startsWith('http')) {
-  url = BASE_PATH + url;
-}
-
