@@ -58,3 +58,29 @@ for (let p of pages) {
     nav.append(a);
 }
 
+function createColorSchemeSwitch() {
+    document.body.insertAdjacentHTML(
+        'afterbegin',
+        `<label class="color-scheme">
+            Theme:
+            <select>
+                <option value="light dark">Automatic</option>
+                <option value="light">Light</option>
+                <option value="dark">Dark</option>
+            </select>
+        </label>`
+    );
+    
+    const schemeSelect = document.querySelector('.color-scheme select');
+    const savedScheme = localStorage.getItem('color-scheme') || 'light dark';
+    schemeSelect.value = savedScheme;
+    document.documentElement.style.colorScheme = savedScheme;
+    
+    schemeSelect.addEventListener('change', function() {
+        const selectedScheme = this.value;
+        document.documentElement.style.colorScheme = selectedScheme;
+        localStorage.setItem('color-scheme', selectedScheme);
+    });
+}
+
+
