@@ -22,7 +22,7 @@ let pages = [
   { url: 'projects/', title: 'Projects' },
   { url: 'contact/', title: 'Contact' },
   { url: 'resume/', title: 'Resume' },
-  { url: 'https://github.com/ftlaiLB9', title: 'GitHub' }
+  { url: 'https://github.com/EllaLi86', title: 'GitHub' }
 ];
 
 const BASE_PATH = (location.hostname === "localhost" || location.hostname === "127.0.0.1")
