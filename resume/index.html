@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume | Ella Li</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <nav>
+        <a href="../">Home</a>
+        <a href="../projects/">Projects</a>
+        <a href="../contact/">Contact</a>
+        <a href="../resume/">Resume</a>
+        <a href="https://github.com/EllaLi86" target="_blank">GitHub</a>
+    </nav>
+
+    <header>
+        <div class="resume-title">
+            <h1>Xinyuan (Ella) Li</h1>
+            <a href="Ella_Li_Resume.pdf" target="_blank">Download PDF version</a>
+        </div>
+        <p>
+            San Diego, CA |
+            <a href="mailto:ell024@ucsd.edu">ell024@ucsd.edu</a> |
+            <a href="https://www.linkedin.com/in/ellali86" target="_blank">LinkedIn</a> |
+            <a href="https://github.com/EllaLi86" target="_blank">GitHub</a>
+        </p>
+    </header>
+
+    <section>
+        <h2>Summary</h2>
+        <p>
+            Data Science and Business Economics student at UC San Diego (GPA 3.99/4.0) with production
+            machine learning and full-stack AI experience: built real-estate valuation models at a proptech
+            startup and shipped an LLM tutoring extension now used by 400+ students. Targeting 2027 summer
+            internships in data science and analytics.
+        </p>
+    </section>
+
+    <section>
+        <h2>Education</h2>
+        <article>
+            <header>
+                <h3>University of California, San Diego</h3>
+                <p>Halıcıoğlu Data Science Institute | Expected <time datetime="2028-06">June 2028</time></p>
+            </header>
+            <p>B.S. Data Science and Business Economics | GPA 3.99/4.0 | Provost Honors, all eligible quarters</p>
+            <p>
+                <strong>Relevant coursework:</strong> Probabilistic Modeling and Machine Learning, Introduction to
+                Data Visualization, Data Structures &amp; Algorithms for Data Science, Theoretical Foundations of
+                Data Science I &amp; II, Practice of Data Science, Intro to Data Management, Applied Statistical
+                Data Analysis, Econometrics A/B/C, Microeconomics A, Linear Algebra, Calculus (Multivariable)
+            </p>
+        </article>
+    </section>
+
+    <section>
+        <h2>Experience and Research</h2>
+
+        <article>
+            <header>
+                <h3>Student Researcher, AI in Education</h3>
+                <p>
+                    Data Science Teaching and Learning Lab, UC San Diego |
+                    <time datetime="2025-10">Oct 2025</time> – Present
+                </p>
+            </header>
+            <ul>
+                <li>Built and shipped a full-stack JupyterLab extension (React/TypeScript frontend, Python/Tornado
+                    backend) that embeds an AI tutor directly in student notebooks, deployed to around 400 students
+                    across 2 quarters of DSC 10.</li>
+                <li>Designed a context-aware retrieval layer that sanitizes live notebook state (active cell,
+                    markdown instructions, and outputs) and surfaces relevant lecture examples via TF-IDF retrieval
+                    with Gemini reranking, reducing generic/off-topic tutor responses by grounding answers in
+                    course-specific material.</li>
+                <li>Shipped exam mode, topic-based practice retrieval, and Socratic prompting constrained to
+                    course-specific APIs (babypandas), logging around 88,000 tutoring sessions to date.</li>
+            </ul>
+        </article>
+
+        <article>
+            <header>
+                <h3>Student Researcher, Economics</h3>
+                <p>
+                    Department of Economics, UC San Diego |
+                    <time datetime="2026-06">Jun 2026</time> – Present
+                </p>
+            </header>
+            <ul>
+                <li>Estimated how UC faculty summer teaching supply responded to the $10,000-per-course pay cap
+                    introduced in 2019, applying regression discontinuity and difference-in-differences to 34,585
+                    administrative course records.</li>
+                <li>Built the full cleaning-to-estimation pipeline in Stata and ran robustness checks across
+                    bandwidths and specifications; results feed into a working paper.</li>
+            </ul>
+        </article>
+
+        <article>
+            <header>
+                <h3>Data Science Tutor</h3>
+                <p>
+                    Halıcıoğlu Data Science Institute, UC San Diego |
+                    <time datetime="2025-09">Sep 2025</time> – Present
+                </p>
+            </header>
+            <ul>
+                <li>Owned an automated grade-reporting pipeline (Python, bash, Gradescope API) that computes final
+                    scores across labs, homework, quizzes, exams, and participation (handling slip days, drops, and
+                    curving), then pushes personalized reports to more than 200 students weekly, replacing an
+                    error-prone manual process and ensuring consistent, reproducible grading.</li>
+                <li>Maintained the course website and GitHub repository, releasing weekly labs, midterm and final
+                    projects on schedule across 3 quarters.</li>
+                <li>Led discussion sections, pod meetings, office hours, and one-on-one exam reviews for more than
+                    200 students per quarter on regression, permutation testing, and Python in Jupyter.</li>
+            </ul>
+        </article>
+
+        <article>
+            <header>
+                <h3>Data Scientist Intern</h3>
+                <p>
+                    IDX Exchange |
+                    <time datetime="2025-06">Jun 2025</time> – <time datetime="2025-09">Sep 2025</time>
+                </p>
+            </header>
+            <ul>
+                <li>Engineered more than 50 features from 125,542 real-estate transaction records (CoreLogic
+                    Trestle API), using exploratory analysis to isolate the price drivers that shaped the final
+                    model architecture.</li>
+                <li>Trained and tuned linear regression, random forest, and XGBoost valuation models, reducing MAPE
+                    from 20.9% to 0.85% through iterative tuning (log-transforming price, pruning low-value
+                    features), reaching a final R² of 0.86; presented results weekly to senior data scientists.</li>
+                <li>Documented the end-to-end modeling pipeline and set reproducibility standards (environment
+                    pinning, seeded splits, and model versioning) adopted by the team.</li>
+            </ul>
+        </article>
+    </section>
+
+    <section>
+        <h2>Projects</h2>
+        <article>
+            <header>
+                <h3>Pokémon Team Recommender</h3>
+                <p>Python, Streamlit | DS3 DataHacks 2025 | <time datetime="2025-04">Apr 2025</time></p>
+            </header>
+            <ul>
+                <li>Built a Streamlit application that recommends optimized six-Pokémon teams from user stat
+                    preferences through a custom weighted scoring algorithm over 1025 Kaggle records; presented to
+                    judges at DataHacks 2025.</li>
+            </ul>
+        </article>
+    </section>
+
+    <section>
+        <h2>Technical Skills</h2>
+        <ul>
+            <li><strong>Languages:</strong> Python (pandas, NumPy, scikit-learn, XGBoost), R, SQL, Stata,
+                TypeScript/JavaScript, Java, HTML/CSS</li>
+            <li><strong>Machine Learning and Statistics:</strong> Regression modeling, feature engineering,
+                A/B testing, permutation testing, causal inference (difference-in-differences, regression
+                discontinuity), exploratory data analysis</li>
+            <li><strong>Tools:</strong> Git/GitHub, JupyterLab, PostgreSQL, React, Tornado, Streamlit,
+                Matplotlib, Seaborn, Excel (advanced), Cursor</li>
+            <li><strong>Spoken Languages:</strong> English (fluent), Mandarin (native)</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Leadership</h2>
+
+        <article>
+            <header>
+                <h3>Orientation Leader</h3>
+                <p>Warren College, UC San Diego | <time datetime="2025-04">Apr 2025</time> – Present</p>
+            </header>
+            <ul>
+                <li>Presented campus resources to more than 300 incoming students and synthesized post-event survey
+                    data from respondents to reshape the following year's programming.</li>
+            </ul>
+        </article>
+
+        <article>
+            <header>
+                <h3>Events Board Member</h3>
+                <p>
+                    Warren College Student Council, UC San Diego |
+                    <time datetime="2024-09">Sep 2024</time> – <time datetime="2025-09">Sep 2025</time>
+                </p>
+            </header>
+            <ul>
+                <li>Planned and executed campus events for more than 500 attendees, managing a $27,581 budget across
+                    20 events.</li>
+            </ul>
+        </article>
+    </section>
+
+    <section>
+        <h2>Honors and Awards</h2>
+        <ul>
+            <li>Provost Honors, Warren College, UC San Diego (UC GPA ≥ 3.5, 12+ graded units),
+                <time datetime="2024-09">Fall 2024</time> – <time datetime="2026-06">Spring 2026</time></li>
+            <li>Fourth Place, Programming Competition, Women in Computing, UC San Diego,
+                <time datetime="2025">2025</time></li>
+        </ul>
+    </section>
+</body>
+</html>

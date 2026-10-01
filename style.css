@@ -1,0 +1,20 @@
+body {
+  /* Set line height to 1.5 times the font size
+	   and use the OS’s UI font as the website font
+	 */
+  font: 100%/1.5 system-ui;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Resume page: name on the left, PDF download link on the right */
+.resume-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.5em 1em;
+}
