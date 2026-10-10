@@ -5,30 +5,102 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects | Ella Li</title>
     <link rel="stylesheet" href="../style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <nav>
         <a href="../">Home</a>
-        <a href="../projects/">Projects</a>
+        <a href="../projects/" class="current">Projects</a>
         <a href="../contact/">Contact</a>
         <a href="../resume/">Resume</a>
         <a href="https://github.com/EllaLi86" target="_blank">GitHub</a>
     </nav>
-    <h1 style="text-align: center;">Projects</h1>
-
-    <article style="max-width: 600px; margin: 0 auto;">
-        <h2 style="text-align: center;">DSC 10 AI Tutor</h2>
-        <p style="text-align: center;"><em>React, TypeScript, Python, Tornado, Gemini | UC San Diego</em></p>
-        <img src="ai_tutor.png" width="600" alt="A DSC 10 lab notebook open in JupyterLab, with the AI Tutor chat panel on the right side showing that the notebook's cells are loaded and the tutor is ready to help.">
-        <p>
-            A full-stack JupyterLab extension that puts an AI tutor right next to students' notebooks in
-            DSC 10 at UC San Diego. The tutor reads the live notebook, including the active cell, the lab
-            instructions, and outputs, so its answers are grounded in what the student is working on. A
-            retrieval layer surfaces relevant lecture examples using TF-IDF with Gemini reranking, and the
-            tutor uses Socratic prompting that sticks to course-specific tools like babypandas, with an exam
-            mode and topic-based practice. It has been used by around 400 students across 2 quarters, with
-            around 88,000 tutoring sessions logged.
-        </p>
-    </article>
+    <h1>Projects</h1>
+    <div class="projects">
+        <article>
+            <h2>DSC 10 AI Tutor</h2>
+            <img src="ai_tutor.png" width="600" alt="A DSC 10 lab notebook open in JupyterLab, with the AI Tutor chat panel on the right side showing that the notebook's cells are loaded and the tutor is ready to help.">
+            <div>
+                <p><em>React, TypeScript, Python, Tornado, Gemini | UC San Diego</em></p>
+                <p>
+                    A full-stack JupyterLab extension that puts an AI tutor right next to students' notebooks in
+                    DSC 10 at UC San Diego. The tutor reads the live notebook, including the active cell, the lab
+                    instructions, and outputs, so its answers are grounded in what the student is working on. A
+                    retrieval layer surfaces relevant lecture examples using TF-IDF with Gemini reranking, and the
+                    tutor uses Socratic prompting that sticks to course-specific tools like babypandas, with an exam
+                    mode and topic-based practice. It has been used by around 400 students across 2 quarters, with
+                    around 88,000 tutoring sessions logged.
+                </p>
+            </div>
+        </article>
+        <article>
+            <h2>IDX Exchange Home Valuation Model</h2>
+            <img src="IDX_exchange.png" width="600" alt="Presentation slide titled Our Random Forest Model, showing the 16 variables used (such as LivingArea, Latitude, Longitude, BedroomsTotal and PoolPrivateYN), an R² score of 0.861 and a MAPE of 0.009.">
+            <div>
+                <p><em>Linear Regression, Random Forest, XGBoost, CoreLogic Trestle API | IDX Exchange</em></p>
+                <p>
+                    A home valuation model built during my data science internship at IDX Exchange. I engineered
+                    more than 50 features from 125,542 real-estate transaction records pulled from the CoreLogic
+                    Trestle API, using exploratory analysis to isolate the main price drivers. I then trained and
+                    tuned linear regression, random forest, and XGBoost models, reducing MAPE from 20.9% to 0.85%
+                    by log-transforming price and pruning low-value features. The final random forest model uses
+                    16 variables and reaches an R² of 0.86. I presented results weekly to senior data scientists
+                    and documented the pipeline with reproducibility standards adopted by the team.
+                </p>
+            </div>
+        </article>
+        <article>
+            <h2>Corporis iure quia unde?</h2>
+            <img src="https://vis-society.github.io/labs/2/images/empty.svg" alt="">
+            <p>Ab tempore eaque quisquam est cumque! Veniam reiciendis quia officia.</p>
+        </article>
+        <article>
+            <h2>Nulla porro velit iure!</h2>
+            <img src="https://vis-society.github.io/labs/2/images/empty.svg" alt="">
+            <p>Quia cupiditate, maxime impedit molestias veniam ullam expedita atque in.</p>
+        </article>
+        <article>
+            <h2>Maxime qui quam hic.</h2>
+            <img src="https://vis-society.github.io/labs/2/images/empty.svg" alt="">
+            <p>Laudantium, reiciendis voluptatum? Voluptas, facere deleniti repellat veritatis alias assumenda.</p>
+        </article>
+        <article>
+            <h2>Ratione odio praesentium repellendus?</h2>
+            <img src="https://vis-society.github.io/labs/2/images/empty.svg" alt="">
+            <p>Iure reprehenderit dolorem suscipit placeat natus earum blanditiis odio quidem?</p>
+        </article>
+        <article>
+            <h2>Facere dolor sapiente ducimus.</h2>
+            <img src="https://vis-society.github.io/labs/2/images/empty.svg" alt="">
+            <p>Quod consequatur quis, placeat voluptas itaque ipsa maiores error debitis?</p>
+        </article>
+        <article>
+            <h2>Fugit asperiores incidunt saepe.</h2>
+            <img src="https://vis-society.github.io/labs/2/images/empty.svg" alt="">
+            <p>Cupiditate optio architecto delectus iure consectetur eius distinctio, soluta ratione.</p>
+        </article>
+        <article>
+            <h2>Maxime eaque obcaecati animi.</h2>
+            <img src="https://vis-society.github.io/labs/2/images/empty.svg" alt="">
+            <p>Velit esse nulla error quae non! Corrupti ex fuga recusandae.</p>
+        </article>
+        <article>
+            <h2>Ab dicta inventore tempore.</h2>
+            <img src="https://vis-society.github.io/labs/2/images/empty.svg" alt="">
+            <p>Quae fuga sint et ad repellat vel eveniet nisi saepe.</p>
+        </article>
+        <article>
+            <h2>Inventore laborum dolorem ratione!</h2>
+            <img src="https://vis-society.github.io/labs/2/images/empty.svg" alt="">
+            <p>Esse dolor quia quam suscipit nostrum possimus minus perferendis consequatur.</p>
+        </article>
+        <article>
+            <h2>Quam soluta eveniet dolorum.</h2>
+            <img src="https://vis-society.github.io/labs/2/images/empty.svg" alt="">
+            <p>Sunt dolore rem quam atque voluptate accusantium facere eum inventore!</p>
+        </article>
+    </div>
 </body>
 </html>

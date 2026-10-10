@@ -3,18 +3,127 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ella Li |Personal site and portfolio</title>
+    <title>Ella Li | Personal site and portfolio</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <nav>
-        <a href="./">Home</a>
+        <a href="./" class="current">Home</a>
         <a href="projects/">Projects</a>
         <a href="contact/">Contact</a>
+        <a href="resume/">Resume</a>
         <a href="https://github.com/EllaLi86" target="_blank">GitHub</a>
     </nav>
-    <h1>Ella Li</h1>
-    <p>Welcome to my personal site and portfolio!</p>
-    <img src="images/ella.jpg" alt="Ella Li's photo" width="400">
+
+    <div class="page">
+        <header class="hero">
+            <div>
+                <p class="eyebrow">Hi, I'm</p>
+                <h1>Ella Li</h1>
+
+                <ul class="tagline">
+                    <li class="t1">Data-driven.</li>
+                    <li class="t2">Research-backed.</li>
+                    <li class="t3">People-first.</li>
+                </ul>
+
+                <p class="lede">
+                    I study Data Science and Business Economics at UC San Diego, and I turn
+                    data into decisions, from machine learning models and AI tools to economic research.
+                </p>
+
+                <ul class="chips">
+                    <li class="t1">UC San Diego</li>
+                    <li class="t2">AI in Education</li>
+                    <li class="t3">Applied Economics</li>
+                </ul>
+            </div>
+
+            <div class="photo">
+                <img src="images/ella.jpg" alt="Ella Li's photo">
+            </div>
+        </header>
+
+        <section>
+            <h2>What I do</h2>
+            <div class="focus">
+                <div style="--accent: var(--teal)">
+                    <span class="num">1</span>
+                    <h3>Machine learning</h3>
+                    <p>Building and tuning predictive models, from feature engineering to XGBoost, that turn large, messy datasets into numbers people can trust.</p>
+                </div>
+                <div style="--accent: var(--gold)">
+                    <span class="num">2</span>
+                    <h3>AI for learning</h3>
+                    <p>Shipping AI tools that help students learn, grounded in course material and in what I see teaching 200+ students each quarter.</p>
+                </div>
+                <div style="--accent: var(--indigo)">
+                    <span class="num">3</span>
+                    <h3>Economics &amp; storytelling</h3>
+                    <p>Using causal inference to study how policy shapes behavior, and turning analysis into reports and Tableau dashboards people can act on.</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Experience</h2>
+            <ul class="timeline">
+                <li style="--accent: var(--indigo)">
+                    <span class="when">Oct 2026 – Now</span>
+                    <div>
+                        <div class="role">Data Analysis Intern</div>
+                        <div class="org">Y Montessori</div>
+                        <div class="note">Montopia Data Lens monthly report, Tableau dashboards designed in Figma</div>
+                    </div>
+                </li>
+                <li style="--accent: var(--indigo)">
+                    <span class="when">Jun 2026 – Now</span>
+                    <div>
+                        <div class="role">Student Researcher, Economics</div>
+                        <div class="org">Department of Economics, UC San Diego</div>
+                        <div class="note">Regression discontinuity &amp; difference-in-differences on UC faculty summer teaching pay, feeding a working paper</div>
+                    </div>
+                </li>
+                <li style="--accent: var(--gold)">
+                    <span class="when">Oct 2025 – Now</span>
+                    <div>
+                        <div class="role">Student Researcher, AI in Education</div>
+                        <div class="org">Data Science Teaching &amp; Learning Lab, UC San Diego</div>
+                        <div class="note">AI tutor in JupyterLab, adopted by 60% of 400+ DSC 10 students</div>
+                    </div>
+                </li>
+                <li style="--accent: var(--gold)">
+                    <span class="when">Sep 2025 – Now</span>
+                    <div>
+                        <div class="role">Data Science Tutor</div>
+                        <div class="org">Halıcıoğlu Data Science Institute, UC San Diego</div>
+                        <div class="note">200+ students per quarter; automated grade-reporting pipeline</div>
+                    </div>
+                </li>
+                <li style="--accent: var(--teal)">
+                    <span class="when">Jun – Aug 2025</span>
+                    <div>
+                        <div class="role">Data Scientist Intern</div>
+                        <div class="org">IDX Exchange</div>
+                        <div class="note">Home valuation model on 125K+ transactions, 0.85% MAPE</div>
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+        <!-- Internship call-to-action: hidden for now, delete these comment markers to bring it back
+        <section class="cta">
+            <p>I'm looking for data science and analytics internships for <strong>summer 2027</strong>.</p>
+            <div class="buttons">
+                <a class="btn primary" href="projects/">See my projects</a>
+                <a class="btn ghost" href="resume/">Resume</a>
+                <a class="btn ghost" href="contact/">Get in touch</a>
+            </div>
+        </section>
+        -->
+    </div>
 </body>
 </html>

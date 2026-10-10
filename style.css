@@ -3,6 +3,8 @@ body {
 	   and use the OS’s UI font as the website font
 	 */
   font: 100%/1.5 system-ui;
+  max-width: 100ch;
+  margin-inline: max(1em, (100% - 100ch) / 2);
 }
 
 img {
@@ -10,11 +12,460 @@ img {
   height: auto;
 }
 
-/* Resume page: name on the left, PDF download link on the right */
 .resume-title {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
   flex-wrap: wrap;
   gap: 0.5em 1em;
+}
+
+nav {
+  display: flex;
+  margin-bottom: 1em;
+  border-bottom: 1px solid oklch(80% 3% 200);
+}
+
+
+nav a {
+  flex: 1;
+  text-decoration: none;
+  color: inherit;
+  text-align: center;
+  padding: 0.5em;
+}
+
+nav a.current {
+  border-bottom: 0.4em solid oklch(80% 3% 200);
+  padding-bottom: 0.1em;
+}
+
+html {
+  --color-accent: oklch(75% 40% 300);
+  accent-color: var(--color-accent);
+}
+
+
+nav a:hover {
+  border-bottom: 0.4em solid var(--color-accent);
+  padding-bottom: 0.1em;
+  background-color: oklch(from var(--color-accent) 95% 5% h);
+}
+
+input,
+textarea,
+button,
+select {
+  font: inherit;
+}
+
+form {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1em;
+}
+
+form label {
+  display: grid;
+  grid-template-columns: subgrid;
+  grid-column: 1 / -1;
+}
+
+form button {
+  grid-column: 1 / -1;
+}
+.projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
+  gap: 1em;
+}
+
+.projects article {
+  display: grid;
+  grid-template-rows: subgrid;
+  grid-row: span 3;
+}
+
+.projects h2 {
+  margin: 0;
+}
+
+h1 {
+  font-size: 400%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.1;
+  text-wrap: balance;
+}
+
+:root {
+  --teal:   #6aa8a8;
+  --gold:   #e8ad3c;
+  --indigo: #6268ad;
+  --ink:    #2e3445;
+  --muted:  #6b7088;
+  --soft:   #f6f7fa;
+  --line:   #e3e5ec;
+}
+
+body {
+    font-family: "Outfit", system-ui, sans-serif;
+    font-weight: 300;
+    color: var(--ink);
+    line-height: 1.65;
+}
+
+.page {
+    max-width: 960px;
+    margin-inline: auto;
+    padding-inline: 1rem;
+}
+
+.t1 { color: var(--teal); }
+.t2 { color: var(--gold); }
+.t3 { color: var(--indigo); }
+
+/* ---------- Hero ---------- */
+.hero {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    align-items: center;
+    gap: 3rem;
+    padding-block: 3.5rem 3rem;
+}
+
+.hero .eyebrow {
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: var(--muted);
+    margin: 0;
+}
+
+.hero h1 {
+    font-size: clamp(2.6rem, 6vw, 4rem);
+    font-weight: 600;
+    line-height: 1.05;
+    margin: 0.2rem 0 1.2rem;
+}
+
+.hero .tagline {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem;
+    font-size: clamp(1.4rem, 3.2vw, 1.9rem);
+    font-weight: 500;
+    line-height: 1.35;
+}
+
+.hero .tagline li {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.hero .tagline li::before {
+    content: "";
+    width: 1.6rem;
+    height: 4px;
+    border-radius: 2px;
+    background: currentColor;
+}
+
+.hero .lede {
+    font-size: 1.15rem;
+    color: var(--muted);
+    margin: 0 0 1.5rem;
+    max-width: 32rem;
+}
+
+.chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.chips li {
+    font-size: 0.92rem;
+    font-weight: 400;
+    padding: 0.3rem 0.85rem;
+    border-radius: 999px;
+    border: 1.5px solid currentColor;
+}
+
+.photo {
+    position: relative;
+    justify-self: center;
+    width: min(280px, 100%);
+    aspect-ratio: 4 / 5;
+}
+
+.photo::before,
+.photo::after {
+    content: "";
+    position: absolute;
+    z-index: 0;
+}
+
+.photo::before {
+    inset: 18px -18px -18px 18px;
+    border-radius: 24px;
+    background: var(--teal);
+    opacity: 0.25;
+}
+
+.photo::after {
+    width: 64px;
+    height: 64px;
+    top: -20px;
+    left: -20px;
+    border-radius: 50%;
+    background: var(--gold);
+    opacity: 0.85;
+}
+
+.photo img {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 24px;
+    display: block;
+}
+
+/* ---------- Sections ---------- */
+section { padding-block: 2.25rem; }
+
+section h2 {
+    font-size: 1.6rem;
+    font-weight: 500;
+    margin: 0 0 1.25rem;
+}
+
+/* What I do: three focus areas */
+.focus {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.75rem;
+}
+
+.focus .num {
+    display: inline-grid;
+    place-items: center;
+    width: 2.4rem;
+    height: 2.4rem;
+    border-radius: 50%;
+    font-weight: 600;
+    color: #fff;
+    background: var(--accent);
+    margin-bottom: 0.75rem;
+}
+
+.focus h3 {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin: 0 0 0.4rem;
+}
+
+.focus p {
+    margin: 0;
+    color: var(--muted);
+}
+
+/* Experience timeline */
+.timeline {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-left: 2px solid var(--line);
+}
+
+.timeline li {
+    position: relative;
+    display: grid;
+    grid-template-columns: 9rem 1fr;
+    gap: 1rem;
+    padding: 0 0 1.4rem 1.5rem;
+}
+
+.timeline li:last-child { padding-bottom: 0; }
+
+.timeline li::before {
+    content: "";
+    position: absolute;
+    left: -7px;
+    top: 0.45rem;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--accent);
+}
+
+.timeline .when {
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--accent);
+    padding-top: 0.15rem;
+}
+
+.timeline .role {
+    font-weight: 500;
+    font-size: 1.08rem;
+}
+
+.timeline .org {
+    color: var(--muted);
+}
+
+.timeline .note {
+    font-size: 0.92rem;
+    color: var(--muted);
+    opacity: 0.85;
+    margin-top: 0.15rem;
+}
+
+/* ---------- Call to action ---------- */
+.cta {
+    background: var(--soft);
+    border-radius: 20px;
+    text-align: center;
+    padding: 2.5rem 1.5rem;
+    margin-block: 1.5rem 3.5rem;
+}
+
+.page > section:last-of-type {
+    padding-bottom: 3.5rem;
+}
+
+.cta p {
+    font-size: 1.2rem;
+    margin: 0 0 1.25rem;
+}
+
+.cta strong { font-weight: 500; }
+
+.cta .buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.65rem 1.4rem;
+    border-radius: 999px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgb(0 0 0 / 0.08);
+}
+
+.btn.primary { background: var(--indigo); color: #fff; }
+.btn.ghost   { border: 1.5px solid var(--indigo); color: var(--indigo); }
+/* ---------- Page titles (Projects, Contact) ---------- */
+h1 {
+    font-weight: 600;
+}
+
+/* ---------- Projects page: cards in the home page palette ---------- */
+.projects {
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 22em), 1fr));
+    gap: 1.75rem;
+}
+
+.projects article {
+    --accent: var(--teal);
+    background: var(--soft);
+    border: 1px solid var(--line);
+    border-top: 4px solid var(--accent);
+    border-radius: 16px;
+    padding: 1.75rem;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.projects article:nth-child(3n + 2) { --accent: var(--gold); }
+.projects article:nth-child(3n)     { --accent: var(--indigo); }
+
+.projects article:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgb(0 0 0 / 0.08);
+}
+
+.projects h2 {
+    font-size: 1.45rem;
+    font-weight: 500;
+}
+
+.projects img {
+    border-radius: 12px;
+}
+
+.projects p {
+    margin: 0;
+    color: var(--muted);
+}
+
+.projects p + p {
+    margin-top: 0.6rem;
+}
+
+.projects em {
+    font-style: normal;
+    font-size: 0.92rem;
+    font-weight: 500;
+    color: var(--ink);
+}
+
+/* ---------- Contact page: form in the home page palette ---------- */
+form label {
+    font-weight: 400;
+}
+
+form input,
+form textarea {
+    padding: 0.6rem 0.85rem;
+    border: 1.5px solid var(--line);
+    border-radius: 10px;
+    background: #fff;
+    color: var(--ink);
+}
+
+form textarea {
+    min-height: 8rem;
+    resize: vertical;
+}
+
+form input:focus,
+form textarea:focus {
+    outline: none;
+    border-color: var(--indigo);
+    box-shadow: 0 0 0 3px rgb(98 104 173 / 0.15);
+}
+
+form button {
+    justify-self: start;
+    padding: 0.65rem 1.6rem;
+    border: none;
+    border-radius: 999px;
+    background: var(--indigo);
+    color: #fff;
+    font-weight: 500;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+form button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgb(0 0 0 / 0.08);
 }
