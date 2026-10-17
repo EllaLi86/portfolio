@@ -21,9 +21,10 @@ img {
 }
 
 nav {
+  --border-color: oklch(50% 10% 200 / 40%);
   display: flex;
   margin-bottom: 1em;
-  border-bottom: 1px solid oklch(80% 3% 200);
+  border-bottom: 1px solid var(--border-color);
 }
 
 
@@ -36,11 +37,12 @@ nav a {
 }
 
 nav a.current {
-  border-bottom: 0.4em solid oklch(80% 3% 200);
+  border-bottom: 0.4em solid var(--border-color);
   padding-bottom: 0.1em;
 }
 
 html {
+  color-scheme: light dark;
   --color-accent: oklch(75% 40% 300);
   accent-color: var(--color-accent);
 }
@@ -49,7 +51,7 @@ html {
 nav a:hover {
   border-bottom: 0.4em solid var(--color-accent);
   padding-bottom: 0.1em;
-  background-color: oklch(from var(--color-accent) 95% 5% h);
+  background-color: color-mix(in oklch, var(--color-accent), canvas 85%);
 }
 
 input,
@@ -103,10 +105,11 @@ h1, h2, h3, h4, h5, h6 {
   --teal:   #6aa8a8;
   --gold:   #e8ad3c;
   --indigo: #6268ad;
-  --ink:    #2e3445;
-  --muted:  #6b7088;
-  --soft:   #f6f7fa;
-  --line:   #e3e5ec;
+  /* light-dark() picks the first color in light mode, the second in dark mode */
+  --ink:    light-dark(#2e3445, #e6e8f0);
+  --muted:  light-dark(#6b7088, #a3a8bd);
+  --soft:   light-dark(#f6f7fa, #23262f);
+  --line:   light-dark(#e3e5ec, #3a3e4b);
 }
 
 body {
@@ -437,7 +440,7 @@ form textarea {
     padding: 0.6rem 0.85rem;
     border: 1.5px solid var(--line);
     border-radius: 10px;
-    background: #fff;
+    background: canvas;
     color: var(--ink);
 }
 
@@ -468,4 +471,12 @@ form button {
 form button:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 16px rgb(0 0 0 / 0.08);
+}
+
+/* ---------- Theme switcher ---------- */
+.color-scheme {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 80%;
 }
