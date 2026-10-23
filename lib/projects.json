@@ -16,6 +16,14 @@
         "description": "A home valuation model built during my data science internship at IDX Exchange. I engineered more than 50 features from 125,542 real-estate transaction records pulled from the CoreLogic Trestle API, using exploratory analysis to isolate the main price drivers. I then trained and tuned linear regression, random forest, and XGBoost models, reducing MAPE from 20.9% to 0.85% by log-transforming price and pruning low-value features. The final random forest model uses 16 variables and reaches an R² of 0.86. I presented results weekly to senior data scientists and documented the pipeline with reproducibility standards adopted by the team."
     },
     {
+        "title": "UC Faculty Summer Teaching Pay Study",
+        "year": "2026",
+        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+        "tech": "Stata, Regression Discontinuity, Difference-in-Differences | UC San Diego Economics",
+        "summary": "How did UC faculty respond when the $10,000-per-course cap on summer teaching pay was removed in 2019? A causal study of 34,585 course records, feeding a working paper.",
+        "description": "Economics research estimating how UC faculty summer teaching supply responded to the 2019 removal of the $10,000-per-course cap on summer pay, which is set at 8.5% of base salary. I apply regression discontinuity and difference-in-differences designs to 34,585 administrative course records. I built the full cleaning-to-estimation pipeline in Stata and ran robustness checks across bandwidths and specifications. The results feed into a working paper with the Department of Economics at UC San Diego."
+    },
+    {
         "title": "Personal Portfolio Website",
         "year": "2026",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
@@ -28,13 +36,6 @@
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
         "tech": "Tableau, Figma | Y Montessori",
         "description": "A monthly data report for Y Montessori, with Tableau dashboards designed in Figma so staff can follow key trends at a glance."
-    },
-    {
-        "title": "UC Faculty Summer Teaching Pay Study",
-        "year": "2026",
-        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "tech": "Regression Discontinuity, Difference-in-Differences | UC San Diego Economics",
-        "description": "Economics research on UC faculty summer teaching pay, using regression discontinuity and difference-in-differences designs to study how pay policy shapes behavior. The analysis feeds a working paper."
     },
     {
         "title": "Automated Grade-Reporting Pipeline",
