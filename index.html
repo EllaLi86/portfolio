@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
     <script type="module" src="global.js"></script>
+    <script src="index.js" type="module" defer></script>
 </head>
 <body>
     <div class="page">
@@ -107,16 +108,22 @@
             </ul>
         </section>
 
-        <!-- Internship call-to-action: hidden for now, delete these comment markers to bring it back
-        <section class="cta">
-            <p>I'm looking for data science and analytics internships for <strong>summer 2027</strong>.</p>
-            <div class="buttons">
-                <a class="btn primary" href="projects/">See my projects</a>
-                <a class="btn ghost" href="resume/">Resume</a>
-                <a class="btn ghost" href="contact/">Get in touch</a>
+        <section class="latest">
+            <div class="section-head">
+                <h2>Latest Projects</h2>
+                <a href="projects/">See all projects →</a>
             </div>
+            <div class="projects"></div>
         </section>
-        -->
+
+        <section>
+            <div class="section-head">
+                <h2>My GitHub Stats</h2>
+                <a href="https://github.com/EllaLi86" target="_blank">View profile →</a>
+            </div>
+            <div id="profile-stats"></div>
+        </section>
+
     </div>
 </body>
 </html>

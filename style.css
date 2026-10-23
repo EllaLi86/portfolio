@@ -480,3 +480,128 @@ form button:hover {
     right: 1rem;
     font-size: 80%;
 }
+
+/* ---------- Home page: compact Latest Projects cards ---------- */
+.section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+    margin-bottom: 1.25rem;
+}
+
+.section-head h2 { margin: 0; }
+
+.section-head a {
+    font-weight: 500;
+    color: var(--indigo);
+    text-decoration: none;
+}
+
+.section-head a:hover { text-decoration: underline; }
+
+.latest .projects {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+    gap: 1.25rem;
+}
+
+.latest .projects article {
+    padding: 0;
+    overflow: hidden;
+    grid-row: span 3;
+}
+
+/* Image becomes a full-bleed banner at the top of each card */
+.latest .projects img {
+    order: -1;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: 0;
+    border-bottom: 1px solid var(--line);
+}
+
+.latest .projects h2 {
+    font-size: 1.15rem;
+    margin: 0;
+    padding: 1.1rem 1.25rem 0;
+}
+
+.latest .projects article > div {
+    padding: 0.4rem 1.25rem 1.25rem;
+}
+
+/* Tech stack as a small accent-colored label */
+.latest .projects em {
+    display: block;
+    font-size: 0.75rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--accent);
+}
+
+/* Keep briefs short: at most 6 lines */
+.latest .projects p:last-child {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 6;
+    line-clamp: 6;
+    overflow: hidden;
+    font-size: 0.95rem;
+}
+
+/* ---------- Home page: GitHub stats ---------- */
+#profile-stats dl {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0 1.25rem;
+    margin: 0;
+    padding: 1.5rem;
+    background: var(--soft);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+}
+
+/* Labels on the first row, numbers on the second, one column per stat */
+#profile-stats dt {
+    grid-row: 1;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+
+#profile-stats dd {
+    grid-row: 2;
+    margin: 0;
+    font-size: 2.2rem;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+#profile-stats dd:nth-of-type(4n + 1) { color: var(--teal); }
+#profile-stats dd:nth-of-type(4n + 2) { color: var(--gold); }
+#profile-stats dd:nth-of-type(4n + 3) { color: var(--indigo); }
+
+/* Phones: 2 x 2, each label still above its number */
+@media (max-width: 560px) {
+    #profile-stats dl {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    #profile-stats dt:nth-of-type(n + 3) { grid-row: 3; margin-top: 1rem; }
+    #profile-stats dd:nth-of-type(n + 3) { grid-row: 4; }
+}
+
+/* ---------- Project year badge (both pages) ---------- */
+.projects .year {
+    display: inline-block;
+    margin-bottom: 0.5rem;
+    padding: 0.1rem 0.6rem;
+    border: 1.5px solid var(--accent);
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--accent);
+}

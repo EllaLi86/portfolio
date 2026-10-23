@@ -1,0 +1,82 @@
+[
+    {
+        "title": "DSC 10 AI Tutor",
+        "year": "2025",
+        "image": "images/ai_tutor.png",
+        "tech": "React, TypeScript, Python, Tornado, Gemini | UC San Diego",
+        "summary": "An AI tutor that lives inside JupyterLab, reads each student's live notebook, and guides them Socratically. Used by ~400 students across 88K sessions.",
+        "description": "A full-stack JupyterLab extension that puts an AI tutor right next to students' notebooks in DSC 10 at UC San Diego. The tutor reads the live notebook, including the active cell, the lab instructions, and outputs, so its answers are grounded in what the student is working on. A retrieval layer surfaces relevant lecture examples using TF-IDF with Gemini reranking, and the tutor uses Socratic prompting that sticks to course-specific tools like babypandas, with an exam mode and topic-based practice. It has been used by around 400 students across 2 quarters, with around 88,000 tutoring sessions logged."
+    },
+    {
+        "title": "IDX Exchange Home Valuation Model",
+        "year": "2025",
+        "image": "images/IDX_exchange.png",
+        "tech": "Linear Regression, Random Forest, XGBoost, CoreLogic Trestle API | IDX Exchange",
+        "summary": "A random forest model that values homes from 125K+ real-estate transactions, cutting error (MAPE) from 20.9% to 0.85%.",
+        "description": "A home valuation model built during my data science internship at IDX Exchange. I engineered more than 50 features from 125,542 real-estate transaction records pulled from the CoreLogic Trestle API, using exploratory analysis to isolate the main price drivers. I then trained and tuned linear regression, random forest, and XGBoost models, reducing MAPE from 20.9% to 0.85% by log-transforming price and pruning low-value features. The final random forest model uses 16 variables and reaches an R² of 0.86. I presented results weekly to senior data scientists and documented the pipeline with reproducibility standards adopted by the team."
+    },
+    {
+        "title": "Personal Portfolio Website",
+        "year": "2026",
+        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+        "tech": "HTML, CSS, JavaScript, GitHub API | DSC 106",
+        "description": "This site, built through the DSC 106 labs: a responsive personal portfolio with a light/dark theme switcher, a project gallery rendered from a JSON file, and live GitHub stats loaded from the GitHub API."
+    },
+    {
+        "title": "Montopia Data Lens Report",
+        "year": "2026",
+        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+        "tech": "Tableau, Figma | Y Montessori",
+        "description": "A monthly data report for Y Montessori, with Tableau dashboards designed in Figma so staff can follow key trends at a glance."
+    },
+    {
+        "title": "UC Faculty Summer Teaching Pay Study",
+        "year": "2026",
+        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+        "tech": "Regression Discontinuity, Difference-in-Differences | UC San Diego Economics",
+        "description": "Economics research on UC faculty summer teaching pay, using regression discontinuity and difference-in-differences designs to study how pay policy shapes behavior. The analysis feeds a working paper."
+    },
+    {
+        "title": "Automated Grade-Reporting Pipeline",
+        "year": "2025",
+        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+        "tech": "Python | Halıcıoğlu Data Science Institute",
+        "description": "A pipeline that automates grade reporting for the data science courses I tutor, which serve 200+ students per quarter."
+    },
+    {
+        "title": "Corporis iure quia unde?",
+        "year": "2024",
+        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+        "description": "Ab tempore eaque quisquam est cumque! Veniam reiciendis quia officia."
+    },
+    {
+        "title": "Nulla porro velit iure!",
+        "year": "2024",
+        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+        "description": "Quia cupiditate, maxime impedit molestias veniam ullam expedita atque in."
+    },
+    {
+        "title": "Maxime qui quam hic.",
+        "year": "2023",
+        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+        "description": "Laudantium, reiciendis voluptatum? Voluptas, facere deleniti repellat veritatis alias assumenda."
+    },
+    {
+        "title": "Ratione odio praesentium repellendus?",
+        "year": "2023",
+        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+        "description": "Iure reprehenderit dolorem suscipit placeat natus earum blanditiis odio quidem?"
+    },
+    {
+        "title": "Facere dolor sapiente ducimus.",
+        "year": "2022",
+        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+        "description": "Quod consequatur quis, placeat voluptas itaque ipsa maiores error debitis?"
+    },
+    {
+        "title": "Fugit asperiores incidunt saepe.",
+        "year": "2024",
+        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+        "description": "Cupiditate optio architecto delectus iure consectetur eius distinctio, soluta ratione."
+    }
+]
