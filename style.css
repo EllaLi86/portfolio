@@ -605,3 +605,82 @@ form button:hover {
     font-weight: 500;
     color: var(--accent);
 }
+
+#projects-pie-plot {
+    flex: 0 1 20em;
+    min-width: 8em;
+    max-width: 20em;
+
+    overflow: visible;
+
+    path {
+        transition: 300ms;
+        cursor: pointer;
+    }
+
+    &:has(path:hover) {
+        path:not(:hover) {
+            opacity: 0.5;
+        }
+    }
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    gap: 2em;
+    margin-block: 2em;
+}
+
+.searchBar {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    margin-block-end: 3rem;
+    padding: 0.75em 1em;
+
+    font: inherit;
+    color: var(--ink);
+    background: var(--soft);
+    border: 1px solid var(--line);
+    border-radius: 0.5em;
+}
+
+.legend {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(9em, 1fr));
+    gap: 1em;
+    flex: 1;
+
+    list-style: none;
+    margin: 0;
+    padding: 1em;
+    border: 1px solid var(--line);
+    border-radius: 0.5em;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+}
+
+.legend-item .swatch {
+    display: inline-block;
+    width: 1em;
+    aspect-ratio: 1 / 1;
+    background-color: var(--color);
+    border-radius: 50%;
+}
+
+.legend-item em {
+    color: var(--muted);
+}
+
+.selected {
+    --color: oklch(60% 45% 0) !important;
+
+    &:is(path) {
+        fill: var(--color);
+    }
+}
