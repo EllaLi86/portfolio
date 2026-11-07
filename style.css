@@ -594,6 +594,68 @@ form button:hover {
     #profile-stats dd:nth-of-type(n + 3) { grid-row: 4; }
 }
 
+/* ---------- Meta page: codebase stats (same look as GitHub stats) ---------- */
+/* 8 stats: 4 columns x 2 groups, each label directly above its number */
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0 1.25rem;
+    margin: 0;
+    padding: 1.5rem;
+    background: var(--soft);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+}
+
+.stats dt {
+    grid-row: 1;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+
+.stats dd {
+    grid-row: 2;
+    margin: 0;
+    font-size: 2.2rem;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.stats dt:nth-of-type(n + 5) { grid-row: 3; margin-top: 1.25rem; }
+.stats dd:nth-of-type(n + 5) { grid-row: 4; }
+
+.stats dd:nth-of-type(4n + 1) { color: var(--teal); }
+.stats dd:nth-of-type(4n + 2) { color: var(--gold); }
+.stats dd:nth-of-type(4n + 3) { color: var(--indigo); }
+
+.stats abbr {
+    text-decoration: underline dotted;
+    cursor: help;
+}
+
+/* Phones: 2 columns, so 4 groups of label + number */
+@media (max-width: 560px) {
+    .stats { grid-template-columns: repeat(2, 1fr); }
+    .stats dt:nth-of-type(n + 3) { grid-row: 3; margin-top: 1rem; }
+    .stats dd:nth-of-type(n + 3) { grid-row: 4; }
+    .stats dt:nth-of-type(n + 5) { grid-row: 5; }
+    .stats dd:nth-of-type(n + 5) { grid-row: 6; }
+    .stats dt:nth-of-type(n + 7) { grid-row: 7; }
+    .stats dd:nth-of-type(n + 7) { grid-row: 8; }
+}
+
+/* ---------- Meta page: scatterplot gridlines ---------- */
+.gridlines .tick line {
+    stroke-opacity: 0.55;  /* color comes from JS (by hour); keep it faint */
+}
+
+.gridlines .domain {
+    display: none;         /* hide the extra vertical axis line */
+}
+
 /* ---------- Project year badge (both pages) ---------- */
 .projects .year {
     display: inline-block;
@@ -683,4 +745,104 @@ form button:hover {
     &:is(path) {
         fill: var(--color);
     }
+}
+
+/* ---------- Meta page: commit tooltip ---------- */
+dl.info {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.25em 1em;
+    margin: 0;
+
+    transition-duration: 500ms;
+    transition-property: opacity, visibility;
+
+    dt {
+        grid-column: 1;
+        margin: 0;
+        font-size: 0.85em;
+        color: var(--muted);
+    }
+
+    dd {
+        grid-column: 2;
+        margin: 0;
+        font-weight: 500;
+    }
+}
+
+dl.info[hidden]:not(:hover, :focus-within) {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.tooltip {
+    position: fixed;
+    top: 1em;
+    left: 1em;
+
+    padding: 0.75em 1em;
+    background-color: color-mix(in oklch, var(--soft) 80%, transparent);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--line);
+    border-radius: 0.5em;
+    box-shadow: 0 4px 16px rgb(0 0 0 / 0.12);
+}
+
+circle {
+    transition: 200ms;
+    transform-origin: center;
+    transform-box: fill-box;
+}
+
+circle:hover {
+    transform: scale(1.5);
+}
+
+/* ---------- Meta page: brush selection ---------- */
+@keyframes marching-ants {
+    to {
+        stroke-dashoffset: -8; /* 5 + 3 */
+    }
+}
+
+.selection {
+    fill-opacity: 0.1;
+    stroke: var(--ink);
+    stroke-opacity: 0.7;
+    stroke-dasharray: 5 3;
+    animation: marching-ants 2s linear infinite;
+}
+
+circle.selected {
+    fill: #ff6b6b;
+}
+
+/* ---------- Meta page: language breakdown of brushed commits ---------- */
+/* Always 3 columns (CSS, JS, HTML): label, then count, then percentage */
+#language-breakdown {
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 1rem;
+
+    /* Override the .stats row placement (incl. the phone layout) */
+    dt { grid-row: 1; margin-top: 0; }
+    dd { grid-row: 2; }
+
+    /* Empty when nothing is brushed: don't show an empty box */
+    &:empty { display: none; }
+}
+
+.lang-count,
+.lang-percent {
+    display: block;
+}
+
+.lang-count {
+    font-size: 1.6rem;
+}
+
+.lang-percent {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--muted);
 }
