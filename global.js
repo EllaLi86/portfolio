@@ -121,12 +121,13 @@ export function renderProjects(projects, containerElement, headingLevel = 'h2') 
     const image = !project.image.startsWith('http') ? BASE_PATH + project.image : project.image;
     const article = document.createElement('article');
     article.innerHTML = `
-      <${headingLevel}>${project.title}</${headingLevel}>
+      <${headingLevel}>${project.url ? `<a href="${project.url}" target="_blank" rel="noopener">${project.title}</a>` : project.title}</${headingLevel}>
       <img src="${image}" alt="${project.title}">
       <div>
         ${project.year ? `<time class="year">${project.year}</time>` : ''}
         ${project.tech ? `<p><em>${project.tech}</em></p>` : ''}
         <p>${project.description}</p>
+        ${project.url ? `<p><a class="project-link" href="${project.url}" target="_blank" rel="noopener">View project →</a></p>` : ''}
       </div>
     `;
     containerElement.appendChild(article);
