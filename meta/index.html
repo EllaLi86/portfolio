@@ -14,13 +14,33 @@
 <body>
     <h1>Meta</h1>
     <p>This page includes stats about the code of this website.</p>
+
     <div id="stats"></div>
 
     <h2>Commits by time of day</h2>
-    <div id="chart"></div>
+    <div id="scrolly-1">
+        <!-- left column: explanatory text that the reader scrolls through -->
+        <div id="scatter-story"></div> <!-- one .step per commit, added by main.js -->
 
-    <p id="selection-count">No commits selected</p>
-    <dl id="language-breakdown" class="stats"></dl>
+        <!-- right column: stays in view (sticky) while the story scrolls -->
+        <div id="scatter-plot">
+            <div id="chart"></div>
+
+            <p id="selection-count">No commits selected</p>
+            <dl id="language-breakdown" class="stats"></dl>
+        </div>
+    </div>
+
+    <h2>Files by size</h2>
+    <!-- mirrored layout: visualization on the left, story on the right -->
+    <div id="scrolly-2">
+        <!-- file sizes unit visualization, filled in by updateFileDisplay() in main.js -->
+        <div id="files-plot">
+            <dl id="files"></dl>
+        </div>
+
+        <div id="files-story"></div> <!-- one .step per commit, added by main.js -->
+    </div>
 
     <dl id="commit-tooltip" class="info tooltip" hidden>
         <dt>Commit</dt>
@@ -32,7 +52,7 @@
         <dd id="commit-date"></dd>
 
         <dt>Time</dt>
-        <dd id="commit-time"></dd>
+        <dd id="commit-hour"></dd>
 
         <dt>Author</dt>
         <dd id="commit-author"></dd>

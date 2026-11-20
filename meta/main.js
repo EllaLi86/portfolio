@@ -1,4 +1,5 @@
 import * as d3 from 'https://cdn.jsdelivr.net/npm/d3@7.9.0/+esm';
+import scrollama from 'https://cdn.jsdelivr.net/npm/scrollama@3.2.0/+esm';
 
 // Declared at module level so the brush functions can use them too
 let xScale;
@@ -44,7 +45,9 @@ function processCommits(data) {
       });
 
       return ret;
-    });
+    })
+    // Oldest first, so the story (and "my first commit") is in time order
+    .sort((a, b) => a.datetime - b.datetime);
 }
 
 function timeOfDay(date) {
@@ -112,7 +115,7 @@ function renderCommitInfo(data, commits) {
 function renderTooltipContent(commit) {
   const link = document.getElementById('commit-link');
   const date = document.getElementById('commit-date');
-  const time = document.getElementById('commit-time');
+  const time = document.getElementById('commit-hour');
   const author = document.getElementById('commit-author');
   const lines = document.getElementById('commit-lines');
 
@@ -206,7 +209,7 @@ function renderScatterPlot(data, commits) {
 
   dots
     .selectAll('circle')
-    .data(sortedCommits)
+    .data(sortedCommits, (d) => d.id) // key by commit id so each commit keeps its own <circle>
     .join('circle')
     .attr('cx', (d) => xScale(d.datetime))
     .attr('cy', (d) => yScale(d.hourFrac))
@@ -230,26 +233,89 @@ function renderScatterPlot(data, commits) {
     .axisLeft(yScale)
     .tickFormat((d) => String(d % 24).padStart(2, '0') + ':00');
 
-  // Add X axis
-  svg
+  // Add X axis (class lets updateScatterPlot find it again)
+  const xAxisGroup = svg
     .append('g')
     .attr('transform', `translate(0, ${usableArea.bottom})`)
-    .call(xAxis)
-    // Tilt the labels so neighbouring ones (e.g. "Sat 31" / "November") don't overlap
-    .selectAll('text')
-    .attr('transform', 'rotate(-35)')
-    .attr('text-anchor', 'end')
-    .attr('dx', '-0.4em')
-    .attr('dy', '0.6em');
+    .attr('class', 'x-axis')
+    .call(xAxis);
+  tiltAxisLabels(xAxisGroup);
 
   // Add Y axis
   svg
     .append('g')
     .attr('transform', `translate(${usableArea.left}, 0)`)
+    .attr('class', 'y-axis') // just for consistency
     .call(yAxis);
 
   // Brush goes last, once everything else is in the SVG
   createBrushSelector(svg);
+}
+
+// Tilt the x-axis labels so neighbouring ones (e.g. "Sat 31" / "November") don't overlap
+function tiltAxisLabels(axisGroup) {
+  axisGroup
+    .selectAll('text')
+    .attr('transform', 'rotate(-35)')
+    .attr('text-anchor', 'end')
+    .attr('dx', '-0.4em')
+    .attr('dy', '0.6em');
+}
+
+// Redraws the x-axis and dots of the EXISTING scatterplot for a new set of commits
+// (renderScatterPlot would append a whole new <svg> every time)
+function updateScatterPlot(data, commits) {
+  const width = 1000;
+  const height = 600;
+  const margin = { top: 10, right: 10, bottom: 60, left: 20 };
+  const usableArea = {
+    top: margin.top,
+    right: width - margin.right,
+    bottom: height - margin.bottom,
+    left: margin.left,
+    width: width - margin.left - margin.right,
+    height: height - margin.top - margin.bottom,
+  };
+
+  // Reuse the svg that renderScatterPlot created
+  const svg = d3.select('#chart').select('svg');
+
+  // Only the x domain changes; the y scale (hours 0–24) stays the same
+  xScale = xScale.domain(d3.extent(commits, (d) => d.datetime)).nice();
+
+  const [minLines, maxLines] = d3.extent(commits, (d) => d.totalLines);
+  const rScale = d3.scaleSqrt().domain([minLines, maxLines]).range([2, 30]);
+
+  const xAxis = d3.axisBottom(xScale);
+
+  // Clear out the old x-axis and draw the new one in the same <g>
+  const xAxisGroup = svg.select('g.x-axis');
+  xAxisGroup.selectAll('*').remove();
+  xAxisGroup.call(xAxis);
+  tiltAxisLabels(xAxisGroup);
+
+  const dots = svg.select('g.dots');
+
+  const sortedCommits = d3.sort(commits, (d) => -d.totalLines);
+  dots
+    .selectAll('circle')
+    .data(sortedCommits, (d) => d.id) // key by commit id so each commit keeps its own <circle>
+    .join('circle')
+    .attr('cx', (d) => xScale(d.datetime))
+    .attr('cy', (d) => yScale(d.hourFrac))
+    .attr('r', (d) => rScale(d.totalLines))
+    .attr('fill', 'steelblue')
+    .style('fill-opacity', 0.7) // Transparency so overlapping dots stay visible
+    .on('mouseenter', (event, commit) => {
+      d3.select(event.currentTarget).style('fill-opacity', 1); // Full opacity on hover
+      renderTooltipContent(commit);
+      updateTooltipVisibility(true);
+      updateTooltipPosition(event);
+    })
+    .on('mouseleave', (event) => {
+      d3.select(event.currentTarget).style('fill-opacity', 0.7);
+      updateTooltipVisibility(false);
+    });
 }
 
 function createBrushSelector(svg) {
@@ -343,3 +409,117 @@ let commits = processCommits(data);
 
 renderCommitInfo(data, commits);
 renderScatterPlot(data, commits);
+
+
+// Color per technology (css, js, html...). Created once, outside updateFileDisplay,
+// so each type keeps the same color on every update
+let colors = d3.scaleOrdinal(d3.schemeTableau10);
+
+// Lists every file touched by the given commits, with its line count
+function updateFileDisplay(filteredCommits) {
+  // All lines from these commits, grouped by file
+  let lines = filteredCommits.flatMap((d) => d.lines);
+  let files = d3
+    .groups(lines, (d) => d.file)
+    .map(([name, lines]) => {
+      return { name, lines };
+    })
+    // Biggest file first, so the list reads like a race
+    .sort((a, b) => b.lines.length - a.lines.length);
+
+  // One <div> per file, keyed by file name so each file keeps its own div
+  let filesContainer = d3
+    .select('#files')
+    .selectAll('div')
+    .data(files, (d) => d.name)
+    .join(
+      // This code only runs when the div is initially rendered
+      (enter) =>
+        enter.append('div').call((div) => {
+          div.append('dt');
+          div.append('dd');
+        }),
+    );
+
+  // This code updates the div info: file name, with its line count underneath
+  filesContainer
+    .select('dt')
+    .html((d) => `<code>${d.name}</code><small>${d.lines.length} lines</small>`);
+
+  // Unit visualization: one dot (div.loc) per line of code in the file
+  filesContainer
+    .select('dd')
+    .selectAll('div')
+    .data((d) => d.lines)
+    .join('div')
+    .attr('class', 'loc')
+    .attr('style', (d) => `--color: ${colors(d.type)}`);
+}
+
+updateFileDisplay(commits); // start with every file shown
+
+// ---------- Scrollytelling ----------
+// Every commit made up to (and including) the given commit
+function commitsUntil(commit) {
+  return commits.filter((d) => d.datetime <= commit.datetime);
+}
+
+// Fills a story column with one .step paragraph per commit
+function renderStory(selector) {
+  d3.select(selector)
+    .selectAll('.step')
+    .data(commits)
+    .join('div')
+    .attr('class', 'step')
+    .html(
+      (d, i) => `
+        On ${d.datetime.toLocaleString('en', {
+          dateStyle: 'full',
+          timeStyle: 'short',
+        })},
+        I made <a href="${d.url}" target="_blank">${
+          i > 0 ? 'another glorious commit' : 'my first commit, and it was glorious'
+        }</a>.
+        I edited ${d.totalLines} lines across ${
+          d3.rollups(
+            d.lines,
+            (D) => D.length,
+            (d) => d.file,
+          ).length
+        } files.
+        Then I looked over all I had made, and I saw that it was very good.
+      `,
+    );
+}
+
+// Scrolly 1: the scatterplot grows as you scroll through the commits
+renderStory('#scatter-story');
+
+function onStepEnter(response) {
+  const commit = response.element.__data__; // D3 stored the commit on the element
+  updateScatterPlot(data, commitsUntil(commit));
+}
+
+const scroller = scrollama();
+scroller
+  .setup({
+    container: '#scrolly-1',
+    step: '#scrolly-1 .step',
+  })
+  .onStepEnter(onStepEnter);
+
+// Scrolly 2: the file sizes grow as you scroll through the commits again
+renderStory('#files-story');
+
+function onFilesStepEnter(response) {
+  const commit = response.element.__data__;
+  updateFileDisplay(commitsUntil(commit));
+}
+
+const filesScroller = scrollama();
+filesScroller
+  .setup({
+    container: '#scrolly-2',
+    step: '#scrolly-2 .step',
+  })
+  .onStepEnter(onFilesStepEnter);
